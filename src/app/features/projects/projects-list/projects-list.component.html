@@ -1,0 +1,64 @@
+<main class="container py-5 mt-5">
+  <!-- Header Section -->
+  <header class="row mb-5 pt-4">
+    <div class="col-lg-8">
+      <nav aria-label="breadcrumb" class="mb-3">
+        <span class="text-uppercase tracking-wider text-muted small fw-bold">{{ translationService.t('nav.projects') }}</span>
+      </nav>
+      <h1 class="display-3 fw-light mb-4">{{ translationService.t('projects.title') }}</h1>
+      <p class="lead text-muted">{{ translationService.t('projects.subtitle') }}</p>
+    </div>
+  </header>
+
+  <!-- Projects Grid -->
+  <section class="row g-4" aria-label="Project listings">
+    @for (project of projects; track project.slug) {
+      <article class="col-md-6 col-lg-4">
+        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden aura-project-card">
+          <div class="card-body p-4 d-flex flex-column">
+            <div class="mb-3">
+              <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary px-3 py-2">
+                {{ project.category | titlecase }}
+              </span>
+            </div>
+            <h2 class="h4 fw-normal mb-2">{{ translationService.t(project.titleKey) }}</h2>
+            <p class="card-text text-muted mb-4 small">
+              {{ translationService.t(project.taglineKey) }}
+            </p>
+            
+            <div class="mt-auto">
+              <div class="d-flex flex-wrap gap-2 mb-4">
+                @for (tech of project.technologies.slice(0, 3); track tech) {
+                  <span class="small text-muted bg-light px-2 py-1 rounded">{{ tech }}</span>
+                }
+              </div>
+              
+              <a [routerLink]="['/projects', project.slug]" 
+                 class="btn btn-outline-primary rounded-pill px-4 aura-btn-sm"
+                 [attr.aria-label]="'Voir les détails de ' + translationService.t(project.titleKey)">
+                {{ translationService.t('projects.view') }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+    }
+  </section>
+
+  <!-- Call to Action Section -->
+  <aside class="row mt-5 pt-5">
+    <div class="col-12">
+      <div class="card bg-dark text-white p-5 rounded-5 border-0 text-center shadow-lg">
+        <div class="card-body">
+          <h2 class="h2 fw-light mb-4">Vous avez un projet similaire ?</h2>
+          <p class="text-white-50 lead mb-5">
+            Discutons de vos besoins et voyons comment nous pouvons vous aider.
+          </p>
+          <a routerLink="/contact" class="btn btn-primary btn-lg rounded-pill px-5">
+            {{ translationService.t('nav.cta') }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </aside>
+</main>

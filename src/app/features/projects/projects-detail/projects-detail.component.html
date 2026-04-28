@@ -1,0 +1,122 @@
+@if (project(); as p) {
+  <main class="container py-5 mt-5">
+    <!-- Breadcrumb & Navigation -->
+    <nav aria-label="breadcrumb" class="mb-4 pt-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/projects" class="text-decoration-none text-muted small fw-bold text-uppercase tracking-wider">{{ translationService.t('nav.projects') }}</a></li>
+        <li class="breadcrumb-item active small fw-bold text-uppercase tracking-wider" aria-current="page">{{ translationService.t(p.titleKey) }}</li>
+      </ol>
+    </nav>
+
+    <!-- Project Header -->
+    <header class="row mb-5 align-items-end">
+      <div class="col-lg-8">
+        <h1 class="display-3 fw-light mb-3 text-dark">{{ translationService.t(p.titleKey) }}</h1>
+        <p class="lead text-primary mb-4 fw-normal">{{ translationService.t(p.taglineKey) }}</p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <div class="mb-4">
+          <span class="text-muted small text-uppercase fw-bold tracking-widest d-block mb-2">{{ translationService.t('projects.deployed') }}</span>
+          <p class="h5 fw-normal">{{ translationService.t(p.deployedAtKey || 'projects.ownership') }}</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="row g-5">
+      <!-- Main Content Column -->
+      <div class="col-lg-8">
+        <!-- Overview -->
+        <section class="mb-5 pb-5 border-bottom" aria-labelledby="overview-heading">
+          <h2 id="overview-heading" class="h3 fw-light mb-4 d-flex align-items-center gap-2">
+            <svg class="text-primary" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            {{ translationService.t('projects.overview') }}
+          </h2>
+          <div class="aura-body lead">
+            {{ translationService.t(p.overviewKey) }}
+          </div>
+        </section>
+
+        <!-- Capabilities -->
+        <section class="mb-5 pb-5 border-bottom" aria-labelledby="capabilities-heading">
+          <h2 id="capabilities-heading" class="h3 fw-light mb-4 d-flex align-items-center gap-2">
+            <svg class="text-primary" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            {{ translationService.t('projects.capabilities') }}
+          </h2>
+          <div class="row g-3">
+            @for (cap of p.capabilities; track cap) {
+              <div class="col-md-6">
+                <div class="p-3 bg-light rounded-4 h-100 border-0 d-flex gap-3">
+                  <svg class="text-primary flex-shrink-0 mt-1" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  <span class="small fw-normal">{{ translationService.t(cap) }}</span>
+                </div>
+              </div>
+            }
+          </div>
+        </section>
+
+        <!-- Business Impact -->
+        @if (p.impacts && p.impacts.length > 0) {
+          <section class="mb-5" aria-labelledby="impact-heading">
+            <h2 id="impact-heading" class="h3 fw-light mb-4 d-flex align-items-center gap-2">
+              <svg class="text-primary" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              {{ translationService.t('projects.impact') }}
+            </h2>
+            <div class="row g-3">
+              @for (impact of p.impacts; track impact) {
+                <div class="col-12">
+                  <div class="p-4 bg-primary bg-opacity-10 rounded-4 border-0 d-flex gap-3">
+                    <svg class="text-primary flex-shrink-0 mt-1" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                    <span class="fw-normal">{{ translationService.t(impact) }}</span>
+                  </div>
+                </div>
+              }
+            </div>
+          </section>
+        }
+      </div>
+
+      <!-- Sidebar Column -->
+      <aside class="col-lg-4">
+        <div class="sticky-top" style="top: 100px; z-index: 10;">
+          <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-body p-4">
+              <h3 class="h5 fw-bold mb-4 small text-uppercase tracking-widest">{{ translationService.t('tech.title') }}</h3>
+              <div class="d-flex flex-wrap gap-2">
+                @for (tech of p.technologies; track tech) {
+                  <span class="badge bg-light text-dark fw-normal rounded-pill px-3 py-2 border">{{ tech }}</span>
+                }
+              </div>
+            </div>
+          </div>
+
+          <div class="card bg-dark text-white border-0 shadow-sm rounded-4 overflow-hidden">
+            <div class="card-body p-4 text-center py-5">
+              <h3 class="h4 fw-light mb-3">Besoin d'une solution sur mesure ?</h3>
+              <p class="small text-white-50 mb-4">Nos experts sont prêts à vous accompagner dans votre transformation digitale.</p>
+              <a routerLink="/contact" class="btn btn-primary rounded-pill px-4">Discuter de mon projet</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Related Projects Section -->
+    <section class="mt-5 pt-5 border-top" aria-labelledby="related-heading">
+      <h2 id="related-heading" class="h3 fw-light mb-5">{{ translationService.t('common.seeAll') }}</h2>
+      <div class="row g-4">
+        @for (rel of relatedProjects(); track rel.slug) {
+          <article class="col-md-4">
+            <a [routerLink]="['/projects', rel.slug]" class="text-decoration-none group">
+              <div class="card h-100 border-0 shadow-sm rounded-4 aura-project-card transition-all">
+                <div class="card-body p-4">
+                  <span class="small text-primary text-uppercase tracking-wider fw-bold mb-2 d-block">{{ rel.category }}</span>
+                  <h3 class="h5 fw-normal text-dark mb-0 group-hover:text-primary transition-colors">{{ translationService.t(rel.titleKey) }}</h3>
+                </div>
+              </div>
+            </a>
+          </article>
+        }
+      </div>
+    </section>
+  </main>
+}

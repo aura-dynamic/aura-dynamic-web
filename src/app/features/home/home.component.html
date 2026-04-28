@@ -1,0 +1,189 @@
+<div class="pt-16 lg:pt-20">
+  <!-- Hero Section -->
+  <section class="min-h-[calc(100vh-5rem)] flex items-center">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <!-- Content -->
+        <div class="order-2 lg:order-1">
+          <span class="aura-micro-label mb-4 block">AURA DYNAMIC</span>
+          <h1 class="aura-headline text-[#0B0D10] mb-6">
+            {{ translationService.t('hero.title') }}
+          </h1>
+          <p class="aura-body text-lg mb-8 max-w-lg">
+            {{ translationService.t('hero.subtitle') }}
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a routerLink="/contact" class="aura-pill-blue">
+              {{ translationService.t('hero.cta.primary') }}
+            </a>
+            <a routerLink="/projects" class="aura-pill-outline">
+              {{ translationService.t('hero.cta.secondary') }}
+            </a>
+          </div>
+        </div>
+
+        <!-- Visual -->
+        <div class="order-1 lg:order-2">
+          <div class="aura-card aspect-[4/3] overflow-hidden relative">
+            <img 
+              src="assets/images/hero-dashboard.jpg" 
+              alt="AURA AUTO Dashboard"
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            <div class="absolute inset-0 flex items-center justify-center bg-[#F6F7F9]" *ngIf="!imageLoaded">
+              <div class="w-full h-full bg-gradient-to-br from-[#3B82F6]/10 to-[#3B82F6]/5 flex items-center justify-center">
+                <svg class="w-24 h-24 text-[#3B82F6]/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="aura-section bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <div class="text-center md:text-left">
+          <div class="stat-number text-[clamp(48px,8vw,80px)] font-normal text-[#0B0D10] tracking-tight leading-none">
+            50+
+          </div>
+          <p class="text-[#6B7280] mt-2">{{ translationService.t('stats.projects') }}</p>
+        </div>
+        <div class="text-center md:text-left">
+          <div class="stat-number text-[clamp(48px,8vw,80px)] font-normal text-[#0B0D10] tracking-tight leading-none">
+            8+
+          </div>
+          <p class="text-[#6B7280] mt-2">{{ translationService.t('stats.years') }}</p>
+        </div>
+        <div class="text-center md:text-left">
+          <div class="stat-number text-[clamp(48px,8vw,80px)] font-normal text-[#0B0D10] tracking-tight leading-none">
+            98%
+          </div>
+          <p class="text-[#6B7280] mt-2">{{ translationService.t('stats.satisfaction') }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Solutions: AURA AUTO & AURA DELIVERY -->
+  <section class="aura-section bg-[#0B0D10] text-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center mb-12">
+        <span class="text-[#3B82F6] text-sm font-medium uppercase tracking-wide mb-4 block">
+          {{ translationService.t('featured.label') }}
+        </span>
+        <h2 class="aura-headline-2">{{ translationService.t('featured.solutions') }}</h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- AURA AUTO -->
+        <div class="rounded-[28px] overflow-hidden border border-gray-800 bg-[#111]">
+          <div class="aspect-video overflow-hidden">
+            <img 
+              src="assets/images/auraauto-dashboard.jpg" 
+              alt="AURA AUTO Interface"
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'"
+            />
+            <div class="w-full h-full bg-gradient-to-br from-[#3B82F6]/20 to-[#1e3a5f] flex items-center justify-center" *ngIf="!auraAutoImageLoaded">
+              <svg class="w-20 h-20 text-[#3B82F6]/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+              </svg>
+            </div>
+          </div>
+          <div class="p-8">
+            <div class="flex flex-wrap items-center gap-3 mb-4">
+              <span class="px-3 py-1 bg-[#3B82F6]/20 text-[#3B82F6] text-sm font-medium rounded-full">
+                {{ translationService.t('projects.ownership') }}
+              </span>
+            </div>
+            <h3 class="text-2xl font-medium mb-2">{{ translationService.t('auraauto.title') }}</h3>
+            <p class="text-gray-400 mb-2">{{ translationService.t('auraauto.tagline') }}</p>
+            <p class="text-gray-500 text-sm mb-4">
+              {{ translationService.t('projects.deployed') }}: <span class="text-gray-300">{{ translationService.t('auraauto.deployed') }}</span>
+            </p>
+
+            <p class="text-gray-400 text-sm mb-6">{{ translationService.t('auraauto.overview') }}</p>
+
+            <a routerLink="/projects" class="text-[#3B82F6] hover:text-white transition-colors inline-flex items-center gap-2 text-sm">
+              {{ translationService.t('common.learnMore') }}
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- AURA DELIVERY -->
+        <div class="rounded-[28px] overflow-hidden border border-gray-800 bg-[#111]">
+          <div class="aspect-video overflow-hidden bg-[#1a1a2e]">
+            <img 
+              src="assets/images/auradelivery-dashboard.jpg" 
+              alt="AURA DELIVERY Interface"
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'"
+            />
+            <div class="w-full h-full bg-gradient-to-br from-[#3B82F6]/20 to-[#1a1a2e] flex items-center justify-center" *ngIf="!auraDeliveryImageLoaded">
+              <svg class="w-20 h-20 text-[#3B82F6]/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
+              </svg>
+            </div>
+          </div>
+          <div class="p-8">
+            <div class="flex flex-wrap items-center gap-3 mb-4">
+              <span class="px-3 py-1 bg-[#3B82F6]/20 text-[#3B82F6] text-sm font-medium rounded-full">
+                {{ translationService.t('projects.ownership') }}
+              </span>
+            </div>
+            <h3 class="text-2xl font-medium mb-2">{{ translationService.t('delivery.title') }}</h3>
+            <p class="text-gray-400 mb-2">{{ translationService.t('delivery.tagline') }}</p>
+            <p class="text-gray-500 text-sm mb-4">
+              {{ translationService.t('projects.deployed') }}: <span class="text-gray-300">{{ translationService.t('delivery.deployed') }}</span>
+            </p>
+
+            <p class="text-gray-400 text-sm mb-6">{{ translationService.t('delivery.overview') }}</p>
+
+            <a routerLink="/projects" class="text-[#3B82F6] hover:text-white transition-colors inline-flex items-center gap-2 text-sm">
+              {{ translationService.t('common.learnMore') }}
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solutions Preview -->
+  <section class="aura-section">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="aura-headline-2 text-[#0B0D10] mb-4">{{ translationService.t('solutions.title') }}</h2>
+        <p class="aura-body">{{ translationService.t('solutions.subtitle') }}</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+        @for (solution of solutions; track $index) {
+          <div class="aura-card p-8 hover:-translate-y-1 transition-transform duration-300">
+            <div class="w-12 h-12 bg-[#3B82F6]/10 rounded-xl flex items-center justify-center mb-6 text-[#3B82F6]">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="solution.iconPath"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-medium text-[#0B0D10] mb-3">{{ solution.title }}</h3>
+            <p class="aura-body">{{ solution.description }}</p>
+          </div>
+        }
+      </div>
+
+      <div class="text-center mt-12">
+        <a routerLink="/solutions" class="aura-pill-dark">
+          {{ translationService.t('common.seeAll') }}
+        </a>
+      </div>
+    </div>
+  </section>
+</div>

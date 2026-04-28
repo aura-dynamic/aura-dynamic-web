@@ -1,0 +1,62 @@
+<div class="pt-32 lg:pt-40 pb-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <!-- Header -->
+    <div class="max-w-3xl mb-16">
+      <span class="aura-micro-label mb-4 block">{{ translationService.t('nav.solutions') }}</span>
+      <h1 class="aura-headline text-[#0B0D10] mb-6">{{ translationService.t('solutions.title') }}</h1>
+      <p class="aura-body text-lg">{{ translationService.t('solutions.subtitle') }}</p>
+    </div>
+
+    <!-- Solutions Grid -->
+    <div class="space-y-8">
+      @for (solution of solutions; track $index; let i = $index) {
+        <div class="aura-card overflow-hidden">
+          <div class="grid lg:grid-cols-2">
+            <div class="p-8 lg:p-12" [class.lg:order-2]="i % 2 === 1">
+              <div class="w-14 h-14 bg-[#3B82F6]/10 rounded-xl flex items-center justify-center mb-6 text-[#3B82F6]">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="solution.iconPath"/>
+                </svg>
+              </div>
+              <h2 class="text-2xl font-medium text-[#0B0D10] mb-4">{{ solution.title }}</h2>
+              <p class="aura-body mb-6">{{ solution.description }}</p>
+              <ul class="space-y-2">
+                @for (feature of solution.features; track $index) {
+                  <li class="flex items-center gap-2 text-[#6B7280]">
+                    <svg class="w-4 h-4 text-[#3B82F6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                    </svg>
+                    {{ feature }}
+                  </li>
+                }
+              </ul>
+            </div>
+            <div class="bg-[#F6F7F9] flex items-center justify-center p-8" [class.lg:order-1]="i % 2 === 1">
+              <div class="w-full max-w-sm aspect-video bg-white rounded-lg shadow-sm flex items-center justify-center">
+                <svg class="w-16 h-16 text-[#3B82F6]/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" [attr.d]="solution.iconPath"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Process -->
+    <div class="mt-20">
+      <h2 class="text-2xl font-medium text-[#0B0D10] mb-8 text-center">{{ translationService.t('process.title') }}</h2>
+      <div class="grid md:grid-cols-4 gap-6">
+        @for (step of processSteps; track $index) {
+          <div class="text-center">
+            <div class="w-12 h-12 bg-[#3B82F6] text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-medium">
+              {{ step.number }}
+            </div>
+            <h3 class="font-medium text-[#0B0D10] mb-2">{{ step.title }}</h3>
+            <p class="text-sm text-[#6B7280]">{{ step.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

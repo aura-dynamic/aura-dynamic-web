@@ -1,0 +1,101 @@
+<header 
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  [ngClass]="{
+    'bg-white/90 backdrop-blur-md shadow-sm': isScrolled(),
+    'bg-transparent': !isScrolled()
+  }"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <a 
+        routerLink="/"
+        class="text-xl lg:text-2xl font-medium tracking-tight text-aura-text logo"
+      >
+        Aura
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8">
+        @for (item of navItems; track item.path) {
+          <a
+            [routerLink]="item.path"
+            [ngClass]="{
+              'text-aura-blue': isActive(item.path),
+              'text-aura-text-secondary hover:text-aura-text': !isActive(item.path)
+            }"
+            class="text-sm transition-colors relative py-2 nav-link"
+          >
+            {{ translationService.t(item.key) }}
+            <span 
+              class="absolute bottom-0 left-0 w-full h-0.5 bg-aura-blue transform transition-transform origin-left"
+              [ngClass]="{
+                'scale-x-100': isActive(item.path),
+                'scale-x-0': !isActive(item.path)
+              }"
+            ></span>
+          </a>
+        }
+
+        <button 
+          (click)="toggleLanguage()"
+          class="text-sm text-aura-text-secondary hover:text-aura-text transition-colors px-3 py-1 border border-aura-hairline rounded-full"
+        >
+          {{ translationService.language() === 'fr' ? 'EN' : 'FR' }}
+        </button>
+
+        <a
+          routerLink="/contact"
+          class="aura-pill-blue text-sm"
+        >
+          {{ translationService.t('nav.cta') }}
+        </a>
+      </nav>
+
+      <button
+        (click)="toggleMobileMenu()"
+        class="lg:hidden p-2 text-aura-text"
+        [attr.aria-label]="isMobileMenuOpen() ? 'Close menu' : 'Open menu'"
+      >
+        @if (isMobileMenuOpen()) {
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        } @else {
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        }
+      </button>
+    </div>
+  </div>
+</header>
+
+@if (isMobileMenuOpen()) {
+  <div class="lg:hidden fixed inset-0 top-16 bg-white z-40 mobile-menu">
+    <nav class="flex flex-col items-center justify-center h-full gap-8 p-6">
+      @for (item of navItems; track item.path) {
+        <a
+          [routerLink]="item.path"
+          [ngClass]="{
+            'text-aura-blue': isActive(item.path),
+            'text-aura-text hover:text-aura-blue': !isActive(item.path)
+          }"
+          class="text-2xl transition-colors mobile-nav-link"
+          (click)="closeMobileMenu()"
+        >
+          {{ translationService.t(item.key) }}
+        </a>
+      }
+
+      <button 
+        (click)="toggleLanguage()"
+        class="text-lg text-aura-text-secondary hover:text-aura-text transition-colors px-4 py-2 border border-aura-hairline rounded-full"
+      >
+        {{ translationService.language() === 'fr' ? 'English' : 'Français' }}
+      </button>
+
+      <a
+        routerLink="/contact"
+        class="aura-pill-blue mt-4"
+        (click)="closeMobileMenu()"
+      >
+        {{ translationService.t('nav.cta') }}
+      </a>
+    </nav>
+  </div>
+}

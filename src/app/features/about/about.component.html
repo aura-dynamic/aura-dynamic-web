@@ -1,0 +1,61 @@
+<div class="pt-32 lg:pt-40 pb-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <!-- Header -->
+    <div class="max-w-3xl mb-16">
+      <span class="aura-micro-label mb-4 block">{{ translationService.t('nav.about') }}</span>
+      <h1 class="aura-headline text-[#0B0D10] mb-6">{{ translationService.t('about.title') }}</h1>
+    </div>
+
+    <!-- Mission & Vision -->
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 mb-20">
+      <div class="aura-card p-8 lg:p-12">
+        <div class="w-12 h-12 bg-[#3B82F6]/10 rounded-xl flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-[#3B82F6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h2 class="text-2xl font-medium text-[#0B0D10] mb-4">{{ translationService.t('about.mission.title') }}</h2>
+        <p class="aura-body text-lg">{{ translationService.t('about.mission.desc') }}</p>
+      </div>
+
+      <div class="aura-card p-8 lg:p-12">
+        <div class="w-12 h-12 bg-[#3B82F6]/10 rounded-xl flex items-center justify-center mb-6">
+          <svg class="w-6 h-6 text-[#3B82F6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+          </svg>
+        </div>
+        <h2 class="text-2xl font-medium text-[#0B0D10] mb-4">{{ translationService.t('about.vision.title') }}</h2>
+        <p class="aura-body text-lg">{{ translationService.t('about.vision.desc') }}</p>
+      </div>
+    </div>
+
+    <!-- Approach -->
+    <div class="mb-20">
+      <div class="aura-card p-8 lg:p-12 bg-[#0B0D10] text-white">
+        <div class="max-w-3xl">
+          <h2 class="text-2xl font-medium mb-4">{{ translationService.t('about.approach.title') }}</h2>
+          <p class="text-gray-400 text-lg leading-relaxed">{{ translationService.t('about.approach.desc') }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Values -->
+    <div>
+      <h2 class="text-2xl font-medium text-[#0B0D10] mb-8">{{ translationService.t('about.values.title') }}</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        @for (value of values; track $index) {
+          <div class="border border-[rgba(11,13,16,0.10)] rounded-[28px] p-6">
+            <div class="w-10 h-10 bg-[#3B82F6]/10 rounded-lg flex items-center justify-center mb-4 text-[#3B82F6]">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="value.iconPath"/>
+              </svg>
+            </div>
+            <h3 class="text-lg font-medium text-[#0B0D10] mb-2">{{ value.title }}</h3>
+            <p class="aura-body">{{ value.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
