@@ -1,32 +1,37 @@
 <header 
-  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
   [ngClass]="{
-    'bg-white/90 backdrop-blur-md shadow-sm': isScrolled(),
-    'bg-transparent': !isScrolled()
+    'bg-white/80 backdrop-blur-xl border-b border-aura-hairline py-2': isScrolled(),
+    'bg-transparent py-6': !isScrolled()
   }"
 >
-  <div class="max-w-7xl mx-auto px-6 lg:px-12">
-    <div class="flex items-center justify-between h-16 lg:h-20">
+  <div class="px-6 mx-auto max-w-7xl lg:px-12">
+    <div class="flex items-center justify-between transition-all duration-500" [ngClass]="isScrolled() ? 'h-12 lg:h-14' : 'h-20 lg:h-24'">
       <a 
         routerLink="/"
-        class="text-xl lg:text-2xl font-medium tracking-tight text-aura-text logo"
+        class="flex items-center transition-transform hover:scale-105 active:scale-95"
       >
-        Aura
+        <img 
+          src="assets/images/company_logos/aura_dynamic.png" 
+          alt="Aura Dynamic" 
+          class="w-auto transition-all duration-500 object-contain"
+          [ngClass]="isScrolled() ? 'h-10 lg:h-12' : 'h-16 lg:h-20'"
+        >
       </a>
 
-      <nav class="hidden lg:flex items-center gap-8">
+      <nav class="items-center hidden gap-10 lg:flex">
         @for (item of navItems; track item.path) {
           <a
             [routerLink]="item.path"
             [ngClass]="{
               'text-aura-blue': isActive(item.path),
-              'text-aura-text-secondary hover:text-aura-text': !isActive(item.path)
+              'text-aura-text/70 hover:text-aura-text': !isActive(item.path)
             }"
-            class="text-sm transition-colors relative py-2 nav-link"
+            class="relative py-2 text-sm font-medium transition-colors nav-link"
           >
             {{ translationService.t(item.key) }}
             <span 
-              class="absolute bottom-0 left-0 w-full h-0.5 bg-aura-blue transform transition-transform origin-left"
+              class="absolute bottom-0 left-0 w-full h-0.5 bg-aura-blue transform transition-transform duration-300 origin-left"
               [ngClass]="{
                 'scale-x-100': isActive(item.path),
                 'scale-x-0': !isActive(item.path)
@@ -35,16 +40,18 @@
           </a>
         }
 
+        <div class="w-px h-4 bg-aura-hairline mx-2"></div>
+
         <button 
           (click)="toggleLanguage()"
-          class="text-sm text-aura-text-secondary hover:text-aura-text transition-colors px-3 py-1 border border-aura-hairline rounded-full"
+          class="px-3 py-1 text-xs font-semibold tracking-wider transition-all border rounded-full text-aura-text-secondary hover:text-aura-text hover:border-aura-text border-aura-hairline"
         >
           {{ translationService.language() === 'fr' ? 'EN' : 'FR' }}
         </button>
 
         <a
           routerLink="/contact"
-          class="aura-pill-blue text-sm"
+          class="aura-pill-dark !text-xs !py-2 !px-5"
         >
           {{ translationService.t('nav.cta') }}
         </a>
@@ -52,13 +59,13 @@
 
       <button
         (click)="toggleMobileMenu()"
-        class="lg:hidden p-2 text-aura-text"
+        class="p-2 transition-colors rounded-lg lg:hidden text-aura-text hover:bg-aura-text/5"
         [attr.aria-label]="isMobileMenuOpen() ? 'Close menu' : 'Open menu'"
       >
         @if (isMobileMenuOpen()) {
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         } @else {
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
         }
       </button>
     </div>
@@ -66,36 +73,51 @@
 </header>
 
 @if (isMobileMenuOpen()) {
-  <div class="lg:hidden fixed inset-0 top-16 bg-white z-40 mobile-menu">
-    <nav class="flex flex-col items-center justify-center h-full gap-8 p-6">
-      @for (item of navItems; track item.path) {
-        <a
-          [routerLink]="item.path"
-          [ngClass]="{
-            'text-aura-blue': isActive(item.path),
-            'text-aura-text hover:text-aura-blue': !isActive(item.path)
-          }"
-          class="text-2xl transition-colors mobile-nav-link"
-          (click)="closeMobileMenu()"
-        >
-          {{ translationService.t(item.key) }}
-        </a>
-      }
-
+  <div class="fixed inset-0 z-40 bg-white/95 backdrop-blur-2xl lg:hidden top-0 mobile-menu">
+    <div class="flex flex-col items-center justify-center h-full gap-10 p-6">
+      <div class="absolute top-6 left-6">
+        <img src="assets/images/company_logos/aura_dynamic.png" alt="Aura Dynamic" class="w-auto h-12">
+      </div>
+      
       <button 
-        (click)="toggleLanguage()"
-        class="text-lg text-aura-text-secondary hover:text-aura-text transition-colors px-4 py-2 border border-aura-hairline rounded-full"
+        (click)="closeMobileMenu()"
+        class="absolute top-6 right-6 p-2 text-aura-text"
       >
-        {{ translationService.language() === 'fr' ? 'English' : 'Français' }}
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
 
-      <a
-        routerLink="/contact"
-        class="aura-pill-blue mt-4"
-        (click)="closeMobileMenu()"
-      >
-        {{ translationService.t('nav.cta') }}
-      </a>
-    </nav>
+      <nav class="flex flex-col items-center gap-6">
+        @for (item of navItems; track item.path) {
+          <a
+            [routerLink]="item.path"
+            [ngClass]="{
+              'text-aura-blue': isActive(item.path),
+              'text-aura-text hover:text-aura-blue': !isActive(item.path)
+            }"
+            class="text-3xl font-light transition-colors mobile-nav-link"
+            (click)="closeMobileMenu()"
+          >
+            {{ translationService.t(item.key) }}
+          </a>
+        }
+      </nav>
+
+      <div class="flex flex-col items-center gap-6 mt-8">
+        <button 
+          (click)="toggleLanguage()"
+          class="px-6 py-2 text-sm font-medium transition-colors border rounded-full text-aura-text-secondary hover:text-aura-text border-aura-hairline"
+        >
+          {{ translationService.language() === 'fr' ? 'English' : 'Français' }}
+        </button>
+
+        <a
+          routerLink="/contact"
+          class="aura-pill-blue !px-8 !py-3 text-lg"
+          (click)="closeMobileMenu()"
+        >
+          {{ translationService.t('nav.cta') }}
+        </a>
+      </div>
+    </div>
   </div>
 }

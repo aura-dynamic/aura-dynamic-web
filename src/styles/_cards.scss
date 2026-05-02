@@ -1,0 +1,32 @@
+@use 'theme' as *;
+
+.card {
+  background: $bg-card;
+  border: 1px solid $border-default;
+  border-radius: $radius-lg;
+  padding: $space-6;
+
+  box-shadow: $shadow-sm;
+  transition: all $transition-base;
+
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+
+  &:hover {
+    transform: $hover-lift;
+    box-shadow: $shadow-lg;
+  }
+}
+
+// SMALL VARIANT (for values)
+.card--sm {
+  padding: $space-5;
+  border-radius: $radius-md;
+}
+
+// WIDE CARD (approach section)
+.card--wide {
+  max-width: 800px;
+  margin: 0 auto;
+}

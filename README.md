@@ -160,4 +160,4 @@ Internal management solution for HR operations and accounting workflows.
 
 ## License
 
-Copyright © 2026 Aura Dynamic. All rights reserved.
+Copyright © 2024-2026 Aura Dynamic. All rights reserved.

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { TranslationService } from '../../core/services/translation.service';
 import { SeoService } from '../../core/services/seo.service';
+import { PROJECTS } from '../../core/data/projects.data';
 
 @Component({
   selector: 'app-home',
@@ -19,21 +20,24 @@ export class HomeComponent implements OnInit {
   auraAutoImageLoaded = false;
   auraDeliveryImageLoaded = false;
 
+  auraAuto = PROJECTS.find(p => p.slug === 'aura-auto');
+  auraDelivery = PROJECTS.find(p => p.slug === 'aura-delivery');
+
   solutions = [
     {
-      iconPath: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
-      title: this.translationService.t('solutions.web.title'),
-      description: this.translationService.t('solutions.web.desc'),
+      iconPath: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10',
+      titleKey: 'solutions.platforms.title',
+      descKey: 'solutions.platforms.desc',
+    },
+    {
+      iconPath: 'M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z',
+      titleKey: 'solutions.ecommerce.title',
+      descKey: 'solutions.ecommerce.desc',
     },
     {
       iconPath: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z',
-      title: this.translationService.t('solutions.mobile.title'),
-      description: this.translationService.t('solutions.mobile.desc'),
-    },
-    {
-      iconPath: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10',
-      title: this.translationService.t('solutions.business.title'),
-      description: this.translationService.t('solutions.business.desc'),
+      titleKey: 'solutions.operational.title',
+      descKey: 'solutions.operational.desc',
     },
   ];
 
@@ -57,9 +61,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.seoService.updateSeo({
-      title: 'Solutions Digitales pour Entreprises',
-      description: 'Aura Dynamic développe des systèmes sur mesure qui transforment votre activité. Découvrez AURA AUTO et AURA DELIVERY, nos solutions phares.',
-      keywords: 'solutions digitales, AURA AUTO, AURA DELIVERY, gestion automobile, livraison, développement web'
+      title: 'Solutions digitales pour entreprises',
+      description: 'Développement de systèmes métiers sur mesure pour automatiser les opérations des entreprises : gestion commerciale, logistique, e-commerce et outils internes.',
+      ogTitle: 'Aura Dynamic | Solutions digitales pour entreprises',
+      ogDescription: 'Développement de systèmes métiers sur mesure pour automatiser les opérations des entreprises : gestion commerciale, logistique, e-commerce et outils internes.'
     });
   }
 }

@@ -1,0 +1,10 @@
+@use 'theme' as *;
+
+.modal {
+  background: $bg-card;
+  border-radius: $radius-lg;
+  padding: $space-6;
+  box-shadow: $shadow-lg;
+  max-width: 500px;
+  width: 100%;
+}

@@ -1,0 +1,24 @@
+@forward 'variables';
+@use 'variables' as *;
+
+// BACKGROUND
+$bg-page: $color-gray-50;
+$bg-section: $color-white;
+$bg-card: $color-white;
+
+// TEXT
+$text-primary: $color-gray-900;
+$text-secondary: $color-gray-500;
+$text-inverse: $color-white;
+
+// BORDERS
+$border-default: $color-gray-200;
+
+// BRAND
+$brand-primary: $color-primary-500;
+$brand-dark: $color-primary-900;
+
+// INTERACTIONS
+$hover-lift: translateY(-4px);
+$transition-fast: 0.2s ease;
+$transition-base: 0.3s ease;

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "aura-dynamic-angular": {
+    "aura-dynamic-web": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/aura-dynamic-angular",
+            "outputPath": "dist/aura-dynamic-web",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -27,11 +27,13 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/404.html"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/styles/main.scss"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
@@ -65,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "aura-dynamic-angular:build:production"
+              "buildTarget": "aura-dynamic-web:build:production"
             },
             "development": {
-              "buildTarget": "aura-dynamic-angular:build:development"
+              "buildTarget": "aura-dynamic-web:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -1,0 +1,23 @@
+@use 'theme' as *;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $space-5;
+}
+
+.section {
+  padding: $space-9 0;
+}
+
+.section--alt {
+  background: $bg-section;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.max-text {
+  max-width: 65ch;
+}

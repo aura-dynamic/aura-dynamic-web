@@ -1,0 +1,28 @@
+@use 'variables' as *;
+@use 'theme' as *;
+@use 'utilities';
+@use 'buttons';
+@use 'cards';
+@use 'forms';
+@use 'tables';
+@use 'modals';
+@use 'pagination';
+@use 'scrollbar';
+
+body {
+  font-family: $font-main;
+  background: $bg-page;
+  color: $text-primary;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: $color-gray-900;
+}
