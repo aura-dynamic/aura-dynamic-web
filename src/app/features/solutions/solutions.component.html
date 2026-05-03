@@ -3,38 +3,49 @@
     <!-- Header -->
     <div class="max-w-3xl mb-16">
       <span class="aura-micro-label mb-4 block">{{ translationService.t('nav.solutions') }}</span>
-      <h1 class="aura-headline text-[#0B0D10] mb-6">{{ translationService.t('solutions.title') }}</h1>
+      <h1 class="aura-headline text-aura-text mb-6">{{ translationService.t('solutions.title') }}</h1>
       <p class="aura-body text-lg">{{ translationService.t('solutions.subtitle') }}</p>
     </div>
 
     <!-- Solutions Grid -->
-    <div class="space-y-8">
+    <div class="space-y-12">
       @for (solution of solutions; track $index; let i = $index) {
-        <div class="aura-card overflow-hidden">
-          <div class="grid lg:grid-cols-2">
-            <div class="p-8 lg:p-12" [class.lg:order-2]="i % 2 === 1">
-              <div class="w-14 h-14 bg-[#3B82F6]/10 rounded-xl flex items-center justify-center mb-6 text-[#3B82F6]">
+        <div class="aura-card overflow-hidden group border border-transparent hover:border-aura-blue/20 transition-all duration-500">
+          <div class="grid lg:grid-cols-2 relative">
+            <!-- Decorative background glow -->
+            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-aura-blue/5 rounded-full blur-3xl group-hover:bg-aura-blue/10 transition-colors duration-700"></div>
+
+            <div class="p-10 lg:p-16 relative z-10" [class.lg:order-2]="i % 2 === 1">
+              <div class="w-14 h-14 bg-aura-blue/10 rounded-xl flex items-center justify-center mb-8 text-aura-blue group-hover:bg-aura-blue group-hover:text-white transition-all duration-500 shadow-sm">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="solution.iconPath"/>
                 </svg>
               </div>
-              <h2 class="text-2xl font-medium text-[#0B0D10] mb-4">{{ solution.title }}</h2>
-              <p class="aura-body mb-6">{{ solution.description }}</p>
-              <ul class="space-y-2">
+
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-px bg-aura-blue/30 group-hover:w-12 group-hover:bg-aura-blue transition-all duration-500"></div>
+                <h2 class="text-3xl font-light text-aura-text group-hover:text-aura-blue transition-colors duration-300">{{ solution.title }}</h2>
+              </div>
+
+              <p class="aura-body text-lg mb-8 font-light leading-relaxed">{{ solution.description }}</p>
+              
+              <ul class="space-y-4">
                 @for (feature of solution.features; track $index) {
-                  <li class="flex items-center gap-2 text-[#6B7280]">
-                    <svg class="w-4 h-4 text-[#3B82F6]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <li class="flex items-center gap-3 text-aura-text-secondary group/feat">
+                    <svg class="w-5 h-5 text-aura-blue transition-transform group-hover/feat:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                     </svg>
-                    {{ feature }}
+                    <span class="text-base font-medium transition-colors group-hover/feat:text-aura-text">{{ feature }}</span>
                   </li>
                 }
               </ul>
             </div>
-            <div class="bg-[#F6F7F9] flex items-center justify-center p-8" [class.lg:order-1]="i % 2 === 1">
-              <div class="w-full max-w-sm aspect-video bg-white rounded-lg shadow-sm flex items-center justify-center">
-                <svg class="w-16 h-16 text-[#3B82F6]/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" [attr.d]="solution.iconPath"/>
+            
+            <div class="bg-aura-bg flex items-center justify-center p-12 lg:p-20 relative overflow-hidden" [class.lg:order-1]="i % 2 === 1">
+              <div class="absolute inset-0 bg-gradient-to-br from-aura-blue/5 to-transparent"></div>
+              <div class="w-full max-w-sm aspect-video bg-white rounded-2xl shadow-aura flex items-center justify-center transition-all hover:scale-105 hover:shadow-2xl duration-500 relative z-10 border border-aura-hairline">
+                <svg class="w-20 h-20 text-aura-blue/20 transition-all duration-700 group-hover:text-aura-blue/40 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" [attr.d]="solution.iconPath"/>
                 </svg>
               </div>
             </div>
@@ -44,16 +55,22 @@
     </div>
 
     <!-- Process -->
-    <div class="mt-20">
-      <h2 class="text-2xl font-medium text-[#0B0D10] mb-8 text-center">{{ translationService.t('process.title') }}</h2>
-      <div class="grid md:grid-cols-4 gap-6">
+    <div class="mt-24 lg:mt-32 mb-12">
+      <h2 class="aura-headline-2 !text-3xl text-center mb-12">{{ translationService.t('process.title') }}</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         @for (step of processSteps; track $index) {
-          <div class="text-center">
-            <div class="w-12 h-12 bg-[#3B82F6] text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-medium">
+          <div class="aura-card p-8 text-center flex flex-col items-center transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-transparent hover:border-aura-blue/10 group relative overflow-hidden">
+            <!-- Decorative glow -->
+            <div class="absolute -right-10 -bottom-10 w-24 h-24 bg-aura-blue/5 rounded-full blur-2xl"></div>
+
+            <div class="w-12 h-12 bg-aura-blue text-white rounded-2xl flex items-center justify-center mb-6 text-lg font-medium shadow-lg shadow-aura-blue/20 transition-all duration-500 group-hover:scale-110 group-hover:bg-blue-600 relative z-10">
               {{ step.number }}
             </div>
-            <h3 class="font-medium text-[#0B0D10] mb-2">{{ step.title }}</h3>
-            <p class="text-sm text-[#6B7280]">{{ step.description }}</p>
+            <h3 class="text-lg font-medium text-aura-text mb-3 transition-colors duration-300 group-hover:text-aura-blue relative z-10">{{ step.title }}</h3>
+            <p class="aura-body text-xs leading-relaxed relative z-10">{{ step.description }}</p>
+            
+            <!-- Hover underline effect -->
+            <div class="absolute bottom-0 left-0 w-0 h-1 transition-all duration-700 bg-aura-blue group-hover:w-full"></div>
           </div>
         }
       </div>

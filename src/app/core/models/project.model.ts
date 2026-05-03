@@ -6,6 +6,11 @@ export interface ProjectImpact {
   key: string;
 }
 
+export interface ProjectModule {
+  titleKey: string;
+  features: string[]; // keys
+}
+
 export interface Project {
   slug: string;
   titleKey: string;
@@ -14,6 +19,7 @@ export interface Project {
   overviewKey: string;
   deployedAtKey?: string;
   capabilities: string[]; // keys for translations
+  projectModules?: ProjectModule[]; // Specialized modules (HR, Finance, Ecommerce, etc.)
   impacts?: string[]; // keys for translations
   features?: string[]; // keys for translations
   imageUrl?: string;

@@ -64,7 +64,43 @@ export const PROJECTS: Project[] = [
     overviewKey: 'ecommerce.overview',
     category: 'ecommerce',
     technologies: ['Angular', 'Node.js', 'MongoDB'],
-    capabilities: [
+    capabilities: [], // Replaced by projectModules
+    projectModules: [
+      {
+        titleKey: 'ecommerce.module.sales.title',
+        features: [
+          'ecommerce.cap.sales.1',
+          'ecommerce.cap.sales.2',
+          'ecommerce.cap.sales.3',
+          'ecommerce.cap.sales.4'
+        ]
+      },
+      {
+        titleKey: 'ecommerce.module.payments.title',
+        features: [
+          'ecommerce.cap.pay.1',
+          'ecommerce.cap.pay.2',
+          'ecommerce.cap.pay.3'
+        ]
+      },
+      {
+        titleKey: 'ecommerce.module.stock.title',
+        features: [
+          'ecommerce.cap.stock.1',
+          'ecommerce.cap.stock.2',
+          'ecommerce.cap.stock.3'
+        ]
+      },
+      {
+        titleKey: 'ecommerce.module.reporting.title',
+        features: [
+          'ecommerce.cap.rep.1',
+          'ecommerce.cap.rep.2',
+          'ecommerce.cap.rep.3'
+        ]
+      }
+    ],
+    impacts: [
       'ecommerce.feature.1', 'ecommerce.feature.2', 'ecommerce.feature.3'
     ],
     seoTitle: 'Solutions E-Commerce Sur Mesure',
@@ -78,10 +114,27 @@ export const PROJECTS: Project[] = [
     overviewKey: 'hrfinance.overview',
     category: 'internal',
     technologies: ['Angular', 'Node.js', 'PostgreSQL'],
-    capabilities: [
-      'hrfinance.cap.hr.1', 'hrfinance.cap.hr.2', 'hrfinance.cap.hr.3', 'hrfinance.cap.hr.4',
-      'hrfinance.cap.acc.1', 'hrfinance.cap.acc.2', 'hrfinance.cap.acc.3', 'hrfinance.cap.acc.4',
-      'hrfinance.cap.rep.1', 'hrfinance.cap.rep.2', 'hrfinance.cap.rep.3', 'hrfinance.cap.rep.4'
+    capabilities: [], // Replaced by projectModules for detail view
+    projectModules: [
+      {
+        titleKey: 'hrfinance.module.hr.title',
+        features: [
+          'hrfinance.cap.hr.1',
+          'hrfinance.cap.hr.2',
+          'hrfinance.cap.hr.3',
+          'hrfinance.cap.hr.4'
+        ]
+      },
+      {
+        titleKey: 'hrfinance.module.finance.title',
+        features: [
+          'hrfinance.cap.acc.1',
+          'hrfinance.cap.acc.2',
+          'hrfinance.cap.acc.3',
+          'hrfinance.cap.rep.1',
+          'hrfinance.cap.rep.3'
+        ]
+      }
     ],
     impacts: [
       'hrfinance.value.1', 'hrfinance.value.2', 'hrfinance.value.3', 'hrfinance.value.4'

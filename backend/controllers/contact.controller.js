@@ -18,7 +18,7 @@ const sanitizeHeader = (str) => {
 };
 
 const sendContactEmail = async (req, res) => {
-  const { name, email, company, message, website } = req.body;
+  const { name, email, company, need, message, website } = req.body;
 
   // Check honeypot (website field should be empty)
   if (website) {
@@ -42,6 +42,16 @@ const sendContactEmail = async (req, res) => {
     const sanitizedEmail = sanitizeHeader(email);
     const timestamp = new Date().toLocaleString();
 
+    // Map need key to readable name
+    const needMap = {
+      'commercial': 'Gestion commerciale',
+      'logistics': 'Logistique / livraison',
+      'ecommerce': 'E-commerce',
+      'internal': 'Système interne',
+      'other': 'Autre'
+    };
+    const readableNeed = need ? (needMap[need] || need) : 'Non spécifié';
+
     // Send emails individually for maximum reliability
     const sendPromises = RECIPIENTS.map(recipient => {
       const mailOptions = {
@@ -55,6 +65,7 @@ New Contact Form Submission
 Name: ${name}
 Email: ${email}
 Company: ${company || 'N/A'}
+Type de besoin: ${readableNeed}
 Date: ${timestamp}
 
 Message:
@@ -67,6 +78,7 @@ ${message}
             <p><strong>Name:</strong> ${name}</p>
             <p><strong>Email:</strong> ${email}</p>
             <p><strong>Company:</strong> ${company || 'N/A'}</p>
+            <p><strong>Type de besoin:</strong> ${readableNeed}</p>
             <p><strong>Date:</strong> ${timestamp}</p>
             <hr style="border: 0; border-top: 1px solid #eee;">
             <h3 style="color: #374151;">Message:</h3>

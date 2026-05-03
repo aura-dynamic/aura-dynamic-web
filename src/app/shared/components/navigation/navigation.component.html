@@ -1,11 +1,11 @@
 <header 
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
   [ngClass]="{
-    'bg-white/80 backdrop-blur-xl border-b border-aura-hairline py-2': isScrolled(),
+    'bg-white/80 backdrop-blur-xl border-b border-gray-200 py-2': isScrolled(),
     'bg-transparent py-6': !isScrolled()
   }"
 >
-  <div class="px-6 mx-auto max-w-7xl lg:px-12">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
     <div class="flex items-center justify-between transition-all duration-500" [ngClass]="isScrolled() ? 'h-12 lg:h-14' : 'h-20 lg:h-24'">
       <a 
         routerLink="/"
@@ -25,16 +25,16 @@
             [routerLink]="item.path"
             [ngClass]="{
               'text-aura-blue': isActive(item.path),
-              'text-aura-text/70 hover:text-aura-text': !isActive(item.path)
+              'text-aura-text-secondary hover:text-aura-blue': !isActive(item.path)
             }"
-            class="relative py-2 text-sm font-medium transition-colors nav-link"
+            class="relative py-2 text-sm font-medium transition-colors group"
           >
             {{ translationService.t(item.key) }}
             <span 
-              class="absolute bottom-0 left-0 w-full h-0.5 bg-aura-blue transform transition-transform duration-300 origin-left"
+              class="absolute -bottom-1 left-1/2 w-1 h-1 bg-aura-blue rounded-full transform -translate-x-1/2 transition-all duration-300"
               [ngClass]="{
-                'scale-x-100': isActive(item.path),
-                'scale-x-0': !isActive(item.path)
+                'opacity-100 scale-100': isActive(item.path),
+                'opacity-0 scale-0 group-hover:opacity-40 group-hover:scale-100': !isActive(item.path)
               }"
             ></span>
           </a>
@@ -44,14 +44,14 @@
 
         <button 
           (click)="toggleLanguage()"
-          class="px-3 py-1 text-xs font-semibold tracking-wider transition-all border rounded-full text-aura-text-secondary hover:text-aura-text hover:border-aura-text border-aura-hairline"
+          class="px-3 py-1 text-[10px] font-bold tracking-widest transition-all border rounded-full text-aura-text-secondary hover:text-aura-blue hover:border-aura-blue border-aura-hairline"
         >
           {{ translationService.language() === 'fr' ? 'EN' : 'FR' }}
         </button>
 
         <a
           routerLink="/contact"
-          class="aura-pill-dark !text-xs !py-2 !px-5"
+          class="aura-pill-blue !text-[11px] !py-2 !px-5 uppercase tracking-wider font-bold"
         >
           {{ translationService.t('nav.cta') }}
         </a>
@@ -59,7 +59,7 @@
 
       <button
         (click)="toggleMobileMenu()"
-        class="p-2 transition-colors rounded-lg lg:hidden text-aura-text hover:bg-aura-text/5"
+        class="p-2 transition-colors rounded-lg lg:hidden text-gray-900 hover:bg-gray-100"
         [attr.aria-label]="isMobileMenuOpen() ? 'Close menu' : 'Open menu'"
       >
         @if (isMobileMenuOpen()) {
@@ -73,7 +73,7 @@
 </header>
 
 @if (isMobileMenuOpen()) {
-  <div class="fixed inset-0 z-40 bg-white/95 backdrop-blur-2xl lg:hidden top-0 mobile-menu">
+  <div class="fixed inset-0 z-40 bg-white/95 backdrop-blur-2xl lg:hidden top-0 transition-all duration-300">
     <div class="flex flex-col items-center justify-center h-full gap-10 p-6">
       <div class="absolute top-6 left-6">
         <img src="assets/images/company_logos/aura_dynamic.png" alt="Aura Dynamic" class="w-auto h-12">
@@ -81,7 +81,7 @@
       
       <button 
         (click)="closeMobileMenu()"
-        class="absolute top-6 right-6 p-2 text-aura-text"
+        class="absolute top-6 right-6 p-2 text-gray-900"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
@@ -94,10 +94,13 @@
               'text-aura-blue': isActive(item.path),
               'text-aura-text hover:text-aura-blue': !isActive(item.path)
             }"
-            class="text-3xl font-light transition-colors mobile-nav-link"
+            class="text-4xl font-light transition-colors relative group"
             (click)="closeMobileMenu()"
           >
             {{ translationService.t(item.key) }}
+            @if (isActive(item.path)) {
+              <span class="absolute -right-6 top-1/2 -translate-y-1/2 w-2 h-2 bg-aura-blue rounded-full"></span>
+            }
           </a>
         }
       </nav>
@@ -105,14 +108,14 @@
       <div class="flex flex-col items-center gap-6 mt-8">
         <button 
           (click)="toggleLanguage()"
-          class="px-6 py-2 text-sm font-medium transition-colors border rounded-full text-aura-text-secondary hover:text-aura-text border-aura-hairline"
+          class="px-8 py-3 text-sm font-medium transition-colors border rounded-full text-aura-text-secondary hover:text-aura-blue border-aura-hairline"
         >
           {{ translationService.language() === 'fr' ? 'English' : 'Français' }}
         </button>
 
         <a
           routerLink="/contact"
-          class="aura-pill-blue !px-8 !py-3 text-lg"
+          class="aura-pill-blue !px-12 !py-4 text-xl font-light"
           (click)="closeMobileMenu()"
         >
           {{ translationService.t('nav.cta') }}

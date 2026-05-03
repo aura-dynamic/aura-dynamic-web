@@ -1,0 +1,63 @@
+@layer components {
+  /* ========================
+     AURA DESIGN SYSTEM
+  ======================== */
+
+  .aura-card {
+    @apply rounded-aura bg-white shadow-aura;
+  }
+
+  .aura-card-dark {
+    @apply rounded-aura bg-aura-dark border border-white/10 shadow-2xl;
+  }
+
+  .aura-section-dark {
+    @apply bg-aura-dark relative overflow-hidden;
+  }
+
+  .aura-pill {
+    @apply inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300;
+  }
+
+  .aura-pill-blue {
+    @apply aura-pill bg-aura-blue text-white hover:bg-blue-600;
+  }
+
+  .aura-pill-outline {
+    @apply aura-pill border border-aura-blue text-aura-blue hover:bg-aura-blue hover:text-white;
+  }
+
+  .aura-pill-dark {
+    @apply aura-pill bg-aura-dark text-white hover:bg-gray-800;
+  }
+
+  .aura-micro-label {
+    @apply  font-medium uppercase tracking-[0.14em] text-aura-text-secondary;
+  }
+
+  .aura-headline {
+    @apply font-display font-light leading-[0.95] tracking-[-0.02em];
+    font-size: clamp(44px, 5vw, 72px);
+  }
+
+  .aura-headline-2 {
+    @apply font-display font-light leading-none tracking-[-0.01em];
+    font-size: clamp(34px, 3.6vw, 52px);
+  }
+
+  .aura-body {
+    @apply font-sans text-base text-aura-text-secondary;
+  }
+
+  .aura-btn-primary {
+    @apply inline-flex items-center justify-center bg-aura-blue text-white rounded-aura font-medium transition-all duration-300 hover:bg-blue-600 hover:scale-105 active:scale-95;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-sm text-gray-900 transition;
+
+    &:focus {
+      @apply outline-none border-primary-500;
+    }
+  }
+}

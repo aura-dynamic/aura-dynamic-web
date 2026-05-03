@@ -5,7 +5,7 @@ const corsOptions = {
   origin: (origin, callback) => {
     const allowedOrigins = [
       process.env.FRONTEND_URL,
-      'http://localhost:4200' // Development
+      'http://localhost:61335' // Development
     ];
     
     // Allow requests with no origin (like mobile apps or curl requests)

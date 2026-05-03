@@ -13,6 +13,7 @@ const contactSchema = Joi.object({
       'string.email': 'Please provide a valid email address'
     }),
   company: Joi.string().trim().max(100).allow('', null),
+  need: Joi.string().trim().max(50).allow('', null),
   message: Joi.string().trim().min(10).max(2000).required()
     .messages({
       'string.empty': 'Message is required',

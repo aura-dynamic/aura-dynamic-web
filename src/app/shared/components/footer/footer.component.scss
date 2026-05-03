@@ -1,3 +1,11 @@
-.logo {
+:host {
+  display: block;
+}
+
+h4 {
   font-family: 'Space Grotesk', sans-serif;
+}
+
+p, a, span {
+  font-family: 'Inter', sans-serif;
 }

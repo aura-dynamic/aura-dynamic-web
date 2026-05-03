@@ -40,14 +40,15 @@ export class ContactComponent implements OnInit {
     name: '',
     email: '',
     company: '',
+    need: '',
     message: ''
   };
 
   ngOnInit(): void {
     this.seoService.updateSeo({
       title: 'Contact',
-      description: 'Prêt à transformer votre activité ? Contactez Aura Dynamic et nous vous répondrons sous 48 heures.',
-      keywords: 'contact Aura Dynamic, devis projet digital, consultation gratuite'
+      description: 'Démarrons votre projet. Décrivez votre besoin et voyons comment structurer vos opérations avec un système adapté.',
+      keywords: 'contact Aura Dynamic, devis projet digital, consultation gratuite, structurer opérations'
     });
   }
 
@@ -64,7 +65,7 @@ export class ContactComponent implements OnInit {
         this.isSubmitting.set(false);
         if (response.success) {
           this.submitted.set(true);
-          this.formData = { name: '', email: '', company: '', message: '' };
+          this.formData = { name: '', email: '', company: '', need: '', message: '' };
 
           // Hide success message after 5 seconds
           setTimeout(() => {

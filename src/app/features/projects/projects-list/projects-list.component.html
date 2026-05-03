@@ -1,64 +1,99 @@
-<main class="container py-5 mt-5">
-  <!-- Header Section -->
-  <header class="row mb-5 pt-4">
-    <div class="col-lg-8">
-      <nav aria-label="breadcrumb" class="mb-3">
-        <span class="text-uppercase tracking-wider text-muted small fw-bold">{{ translationService.t('nav.projects') }}</span>
-      </nav>
-      <h1 class="display-3 fw-light mb-4">{{ translationService.t('projects.title') }}</h1>
-      <p class="lead text-muted">{{ translationService.t('projects.subtitle') }}</p>
-    </div>
-  </header>
+<div class="pt-32 lg:pt-40 pb-20">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <!-- Header Section -->
+    <header class="max-w-3xl mb-16">
+      <span class="aura-micro-label mb-4 block">{{ translationService.t('nav.projects') }}</span>
+      <h1 class="aura-headline text-aura-text mb-6">{{ translationService.t('projects.title') }}</h1>
+      <p class="aura-body text-lg">{{ translationService.t('projects.subtitle') }}</p>
+    </header>
 
-  <!-- Projects Grid -->
-  <section class="row g-4" aria-label="Project listings">
-    @for (project of projects; track project.slug) {
-      <article class="col-md-6 col-lg-4">
-        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden aura-project-card">
-          <div class="card-body p-4 d-flex flex-column">
-            <div class="mb-3">
-              <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary px-3 py-2">
-                {{ project.category | titlecase }}
+    <!-- Projects Grid -->
+    <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" aria-label="Project listings">
+      @for (project of projects; track project.slug) {
+        <article class="aura-card p-10 transition-all duration-500 border border-aura-hairline hover:border-aura-blue/30 group relative overflow-hidden flex flex-col h-full bg-gradient-to-br from-white via-white to-aura-bg">
+          <!-- Decorative background glow -->
+          <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-aura-blue/5 rounded-full blur-3xl group-hover:bg-aura-blue/10 transition-colors duration-700"></div>
+          
+          <div class="relative z-10 flex-grow">
+            <!-- Category Badge -->
+            <div class="mb-6">
+              <span class="px-3 py-1 text-[10px] font-bold uppercase tracking-[0.1em] rounded-full bg-aura-blue/10 text-aura-blue border border-aura-blue/5">
+                {{ translationService.t('category.' + project.category) }}
               </span>
             </div>
-            <h2 class="h4 fw-normal mb-2">{{ translationService.t(project.titleKey) }}</h2>
-            <p class="card-text text-muted mb-4 small">
+
+            <!-- Title & Tagline -->
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-8 h-px bg-aura-blue/40 group-hover:w-12 group-hover:bg-aura-blue transition-all duration-500"></div>
+              <h2 class="text-2xl font-light text-aura-text group-hover:text-aura-blue transition-colors duration-300">
+                {{ translationService.t(project.titleKey) }}
+              </h2>
+            </div>
+            
+            <p class="aura-body text-sm mb-6 font-medium italic opacity-70">
               {{ translationService.t(project.taglineKey) }}
             </p>
             
-            <div class="mt-auto">
-              <div class="d-flex flex-wrap gap-2 mb-4">
-                @for (tech of project.technologies.slice(0, 3); track tech) {
-                  <span class="small text-muted bg-light px-2 py-1 rounded">{{ tech }}</span>
-                }
-              </div>
-              
-              <a [routerLink]="['/projects', project.slug]" 
-                 class="btn btn-outline-primary rounded-pill px-4 aura-btn-sm"
-                 [attr.aria-label]="'Voir les détails de ' + translationService.t(project.titleKey)">
-                {{ translationService.t('projects.view') }}
-              </a>
-            </div>
-          </div>
-        </div>
-      </article>
-    }
-  </section>
+            <!-- Description -->
+            <p class="aura-body text-base text-aura-text/80 leading-relaxed mb-8">
+              {{ translationService.t(project.descriptionKey) }}
+            </p>
 
-  <!-- Call to Action Section -->
-  <aside class="row mt-5 pt-5">
-    <div class="col-12">
-      <div class="card bg-dark text-white p-5 rounded-5 border-0 text-center shadow-lg">
-        <div class="card-body">
-          <h2 class="h2 fw-light mb-4">Vous avez un projet similaire ?</h2>
-          <p class="text-white-50 lead mb-5">
-            Discutons de vos besoins et voyons comment nous pouvons vous aider.
+            <!-- Deployment Info - Compact & Unified -->
+            @if (project.deployedAtKey) {
+              <div class="mb-8 flex items-center text-[11px] py-2 px-3 bg-aura-bg/50 rounded-lg border border-aura-hairline group-hover:bg-white transition-colors duration-500">
+                <p class="text-aura-text-secondary mb-0 leading-none">
+                  <span class="opacity-50 font-bold uppercase tracking-tight">Déployé chez :</span>
+                  <span class="text-aura-text font-semibold ml-1">{{ translationService.t(project.deployedAtKey) }}</span>
+                  <span class="mx-2 text-aura-hairline opacity-30">|</span>
+                  <span class="text-aura-blue font-bold uppercase tracking-widest italic text-[9px]">En Production</span>
+                </p>
+              </div>
+            }
+          </div>
+          
+          <!-- Footer Link -->
+          <div class="relative z-10 mt-auto pt-6 border-t border-aura-hairline">
+            <a [routerLink]="['/projects', project.slug]" 
+               class="text-aura-blue font-semibold text-base flex items-center justify-between group/link transition-all duration-300"
+               [attr.aria-label]="'Voir les détails de ' + translationService.t(project.titleKey)">
+              <span class="flex items-center gap-2 uppercase tracking-widest text-[11px]">
+                {{ translationService.t('projects.view') }} 
+              </span>
+              <div class="w-8 h-8 rounded-full border border-aura-blue/20 flex items-center justify-center group-hover/link:bg-aura-blue group-hover/link:text-white transition-all duration-300">
+                <svg class="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </div>
+            </a>
+          </div>
+
+          <!-- Hover underline effect -->
+          <div class="absolute bottom-0 left-0 w-0 h-1 transition-all duration-700 bg-aura-blue group-hover:w-full"></div>
+        </article>
+      }
+    </section>
+
+    <!-- Call to Action Section -->
+    <aside class="mt-20 lg:mt-24">
+      <div class="aura-card p-10 lg:p-14 text-center relative overflow-hidden group">
+        <!-- Decorative background elements -->
+        <div class="absolute top-0 right-0 w-80 h-80 bg-aura-blue/5 rounded-full -mr-40 -mt-40 blur-3xl group-hover:bg-aura-blue/10 transition-colors duration-700"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-aura-blue/5 rounded-full -ml-40 -mb-40 blur-3xl group-hover:bg-aura-blue/10 transition-colors duration-700"></div>
+        
+        <div class="relative z-10">
+          <h2 class="aura-headline-2 !text-3xl mb-4">{{ translationService.t('projects.cta.title') }}</h2>
+          <p class="aura-body text-base mb-8 max-w-xl mx-auto">
+            {{ translationService.t('projects.cta.desc') }}
           </p>
-          <a routerLink="/contact" class="btn btn-primary btn-lg rounded-pill px-5">
-            {{ translationService.t('nav.cta') }}
+          <a routerLink="/contact" class="aura-btn-primary py-4 px-10 text-base shadow-lg shadow-aura-blue/20 gap-4 group/btn active:scale-95 transition-all duration-300">
+            <svg class="w-6 h-6 transition-transform group-hover/btn:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+            {{ translationService.t('projects.cta.button') }}
           </a>
         </div>
       </div>
-    </div>
-  </aside>
-</main>
+    </aside>
+  </div>
+</div>

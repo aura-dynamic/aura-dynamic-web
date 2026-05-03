@@ -2,11 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslationService } from '../../core/services/translation.service';
 import { SeoService } from '../../core/services/seo.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterLink],
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })

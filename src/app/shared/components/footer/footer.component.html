@@ -1,9 +1,9 @@
-<footer class="aura-section-dark text-white pt-20 pb-12 overflow-hidden relative border-t border-aura-hairline-dark">
+<footer class="bg-primary-900 text-white pt-20 pb-12 overflow-hidden relative border-t border-gray-800">
   <!-- Decorative background elements -->
   <div class="grain-overlay-dark opacity-10"></div>
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-aura-blue/20 to-transparent"></div>
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary-500/20 to-transparent"></div>
 
-  <div class="px-6 mx-auto max-w-7xl lg:px-12 relative z-10">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
       <!-- Brand column -->
       <div class="col-span-1 lg:col-span-2">
@@ -45,12 +45,13 @@
           @for (item of navItems; track item.path) {
             <a
               [routerLink]="item.path"
-              class="text-gray-400 text-sm transition-colors hover:text-aura-blue flex items-center group"
+              class="text-gray-400 text-sm transition-colors hover:text-primary-400 flex items-center group gap-0 group-hover:gap-2"
             >
-              <span class="w-0 overflow-hidden transition-all group-hover:w-4 text-aura-blue">→</span>
+              <svg class="w-0 h-4 overflow-hidden transition-all group-hover:w-4 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
               {{ translationService.t(item.key) }}
-            </a>
-          }
+            </a>          }
         </nav>
       </div>
 
@@ -60,8 +61,8 @@
         <div class="flex flex-col gap-4">
           <div class="space-y-1">
             <a [href]="'mailto:' + config.email" class="text-gray-400 text-sm transition-colors hover:text-white flex items-center gap-3 group">
-              <div class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center transition-colors group-hover:border-aura-blue/30 group-hover:bg-aura-blue/5">
-                <svg class="w-4 h-4 text-aura-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center transition-colors group-hover:border-primary-500/30 group-hover:bg-primary-500/5">
+                <svg class="w-4 h-4 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
                 </svg>
               </div>

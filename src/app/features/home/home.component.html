@@ -5,13 +5,13 @@
       <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <!-- Content -->
         <div class="order-2 lg:order-1">
-          <h1 class="aura-headline text-[#0B0D10] mb-6">
+          <h1 class="mb-6 aura-headline text-aura-text">
             {{ translationService.t('hero.title') }}
           </h1>
           <p class="max-w-lg mb-2 text-lg aura-body">
             {{ translationService.t('hero.subtitle') }}
           </p>
-          <p class="mb-8 text-sm font-medium text-gray-500 aura-body">
+          <p class="mb-8 text-sm font-medium text-aura-text-secondary aura-body">
             {{ translationService.t('hero.support') }}
           </p>
           <div class="flex flex-wrap gap-4">
@@ -34,9 +34,9 @@
               onerror="this.style.display='none'"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-            <div class="absolute inset-0 flex items-center justify-center bg-[#F6F7F9]" *ngIf="!imageLoaded">
-              <div class="w-full h-full bg-gradient-to-br from-[#3B82F6]/10 to-[#3B82F6]/5 flex items-center justify-center">
-                <svg class="w-24 h-24 text-[#3B82F6]/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="absolute inset-0 flex items-center justify-center bg-aura-bg" *ngIf="!imageLoaded">
+              <div class="flex items-center justify-center w-full h-full bg-gradient-to-br from-aura-blue/10 to-aura-blue/5">
+                <svg class="w-24 h-24 text-aura-blue/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                 </svg>
               </div>
@@ -48,16 +48,16 @@
   </section>
 
   <!-- Problem Section -->
-  <section class="pt-16 pb-8 bg-white border-t border-gray-50">
+  <section class="pt-16 pb-8 bg-white border-t border-aura-hairline">
     <div class="max-w-3xl px-6 mx-auto text-center">
       <div class="space-y-6">
-        <h2 class="text-2xl font-bold leading-tight text-gray-900 md:text-3xl">
+        <h2 class="text-2xl font-bold leading-tight text-aura-text md:text-3xl">
           {{ translationService.t('home.pain.title') }}
         </h2>
-        <p class="text-lg leading-relaxed text-gray-600">
+        <p class="text-lg leading-relaxed text-aura-text-secondary">
           {{ translationService.t('home.pain.description') }}
         </p>
-        <p class="text-lg font-semibold text-[#3B82F6] leading-relaxed">
+        <p class="text-lg font-semibold leading-relaxed text-aura-blue">
           {{ translationService.t('home.pain.solution') }}
         </p>
       </div>
@@ -66,26 +66,27 @@
 
   <!-- Stats Section -->
   <section class="pt-8 pb-16 bg-white">
-    <div class="px-6 mx-auto max-w-7xl lg:px-12">      <div class="grid grid-cols-1 gap-8 md:grid-cols-3 lg:gap-12">
+    <div class="px-6 mx-auto max-w-7xl lg:px-12">
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-3 lg:gap-12">
         <div class="text-center md:text-left">
-          <div class="stat-number text-[clamp(48px,8vw,80px)] font-normal text-[#0B0D10] tracking-tight leading-none">
+          <div class="stat-number text-[clamp(48px,8vw,80px)] font-normal text-aura-text tracking-tight leading-none">
             8+
           </div>
-          <p class="text-[#6B7280] mt-2">{{ translationService.t('home.stats.systems').replace('8+', '').trim() }}</p>
+          <p class="mt-2 text-aura-text-secondary">{{ translationService.t('home.stats.systems').replace('8+', '').trim() }}</p>
         </div>
         <div class="text-center md:text-left">
-          <div class="stat-number text-[clamp(48px,8vw,80px)] font-normal text-[#0B0D10] tracking-tight leading-none">
+          <div class="stat-number text-[clamp(48px,8vw,80px)] font-normal text-aura-text tracking-tight leading-none">
             3
           </div>
-          <p class="text-[#6B7280] mt-2">{{ translationService.t('home.stats.sectors').replace('3', '').trim() }}</p>
+          <p class="mt-2 text-aura-text-secondary">{{ translationService.t('home.stats.sectors').replace('3', '').trim() }}</p>
         </div>
         <div class="flex flex-col items-center justify-center text-center ">
-          <div class=" text-[#3B82F6]">
+          <div class=" text-aura-blue">
             <svg class="w-10 h-10 md:w-12 md:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
             </svg>
           </div>
-          <div class="text-2xl font-medium text-[#0B0D10] tracking-tight leading-tight">
+          <div class="text-2xl font-medium leading-tight tracking-tight text-aura-text">
             {{ translationService.t('home.stats.production') }}
           </div>
         </div>
@@ -94,18 +95,15 @@
   </section>
 
   <!-- Featured Solutions: AURA AUTO & AURA DELIVERY -->
-  <section class="aura-section bg-[#0B0D10] text-white">
+  <section class="aura-section-dark">
     <div class="px-6 mx-auto max-w-7xl lg:px-12">
-      <div class="mb-12 text-center">
-        <span class="text-[#3B82F6] text-sm font-medium uppercase tracking-wide mb-4 block">
-          {{ translationService.t('featured.label') }}
-        </span>
-        <h2 class="aura-headline-2">{{ translationService.t('featured.solutions') }}</h2>
+      <div class="my-12 text-center ">
+        <h2 class= "text-white aura-headline-2">{{ translationService.t('featured.solutions') }}</h2>
       </div>
 
-      <div class="grid gap-8 lg:grid-cols-2">
+      <div class="grid gap-8 mb-12 lg:grid-cols-2">
         <!-- AURA AUTO -->
-        <div class="rounded-[28px] overflow-hidden border border-gray-800 bg-[#111] flex flex-col h-full">
+        <div class="flex flex-col h-full overflow-hidden border rounded-aura border-white/10 bg-white/5">
           <div class="overflow-hidden aspect-video">
             <img 
               src="assets/images/auraauto-dashboard.jpg" 
@@ -113,66 +111,78 @@
               class="object-cover w-full h-full"
               onerror="this.style.display='none'"
             />
-            <div class="w-full h-full bg-gradient-to-br from-[#3B82F6]/20 to-[#1e3a5f] flex items-center justify-center" *ngIf="!auraAutoImageLoaded">
-              <svg class="w-20 h-20 text-[#3B82F6]/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="flex items-center justify-center w-full h-full bg-gradient-to-br from-aura-blue/20 to-aura-dark" *ngIf="!auraAutoImageLoaded">
+              <svg class="w-20 h-20 text-aura-blue/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
               </svg>
             </div>
           </div>
-          <div class="p-8 flex-1 flex flex-col">
+          <div class="flex flex-col flex-1 p-8">
             <div class="flex flex-wrap items-center gap-3 mb-4">
-              <span class="px-3 py-1 bg-[#3B82F6]/20 text-[#3B82F6] text-sm font-medium rounded-full">
+              <span class="px-3 py-1 text-sm font-medium rounded-full bg-aura-blue/20 text-aura-blue">
                 {{ translationService.t('category.automotive') }}
               </span>
             </div>
-            <h3 class="mb-2 text-2xl font-medium">{{ translationService.t('auraauto.title') }}</h3>
+            <h3 class="mb-2 text-2xl font-medium text-white">{{ translationService.t('auraauto.title') }}</h3>
             <p class="mb-2 text-gray-400">{{ translationService.t('auraauto.tagline') }}</p>
-            <p class="mb-4 text-sm text-gray-500">
-              {{ translationService.t('projects.deployed') }}: <span class="text-gray-300">{{ translationService.t('auraauto.deployed') }}</span>
+            <p class="mb-4 text-[11px] text-gray-500">
+              <span class="opacity-60 uppercase tracking-tight font-bold">{{ translationService.t('projects.deployed') }} :</span>
+              <span class="text-gray-300 ml-1">{{ translationService.t('auraauto.deployed') }}</span>
+              <span class="mx-2 text-white/10">|</span>
+              <span class="text-aura-blue font-bold uppercase tracking-widest italic text-[9px]">En Production</span>
             </p>
 
             <p class="mb-6 text-sm text-gray-400">{{ translationService.t('auraauto.overview') }}</p>
 
             <div class="mt-auto">
-              <a routerLink="/projects/aura-auto" class="text-[#3B82F6] hover:text-white transition-colors inline-flex items-center gap-2 text-sm">
-                {{ translationService.t('common.learnMore') }} →
+              <a routerLink="/projects/aura-auto" class="inline-flex items-center gap-2 text-sm transition-all duration-300 text-aura-blue hover:text-white group">
+                {{ translationService.t('common.learnMore') }} 
+                <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
               </a>
             </div>
           </div>
         </div>
 
         <!-- AURA DELIVERY -->
-        <div class="rounded-[28px] overflow-hidden border border-gray-800 bg-[#111] flex flex-col h-full">
-          <div class="aspect-video overflow-hidden bg-[#1a1a2e]">
+        <div class="flex flex-col h-full overflow-hidden border rounded-aura border-white/10 bg-white/5">
+          <div class="overflow-hidden aspect-video bg-white/5">
             <img 
               src="assets/images/auradelivery-dashboard.jpg" 
               alt="AURA DELIVERY Interface"
               class="object-cover w-full h-full"
               onerror="this.style.display='none'"
             />
-            <div class="w-full h-full bg-gradient-to-br from-[#3B82F6]/20 to-[#1a1a2e] flex items-center justify-center" *ngIf="!auraDeliveryImageLoaded">
-              <svg class="w-20 h-20 text-[#3B82F6]/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="flex items-center justify-center w-full h-full bg-gradient-to-br from-aura-blue/20 to-aura-dark" *ngIf="!auraDeliveryImageLoaded">
+              <svg class="w-20 h-20 text-aura-blue/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
               </svg>
             </div>
           </div>
-          <div class="p-8 flex-1 flex flex-col">
+          <div class="flex flex-col flex-1 p-8">
             <div class="flex flex-wrap items-center gap-3 mb-4">
-              <span class="px-3 py-1 bg-[#3B82F6]/20 text-[#3B82F6] text-sm font-medium rounded-full">
+              <span class="px-3 py-1 text-sm font-medium rounded-full bg-aura-blue/20 text-aura-blue">
                 {{ translationService.t('category.logistics') }}
               </span>
             </div>
-            <h3 class="mb-2 text-2xl font-medium">{{ translationService.t('delivery.title') }}</h3>
+            <h3 class="mb-2 text-2xl font-medium text-white">{{ translationService.t('delivery.title') }}</h3>
             <p class="mb-2 text-gray-400">{{ translationService.t('delivery.tagline') }}</p>
-            <p class="mb-4 text-sm text-gray-500">
-              {{ translationService.t('projects.deployed') }}: <span class="text-gray-300">{{ translationService.t('delivery.deployed') }}</span>
+            <p class="mb-4 text-[11px] text-gray-500">
+              <span class="opacity-60 uppercase tracking-tight font-bold">{{ translationService.t('projects.deployed') }} :</span>
+              <span class="text-gray-300 ml-1">{{ translationService.t('delivery.deployed') }}</span>
+              <span class="mx-2 text-white/10">|</span>
+              <span class="text-aura-blue font-bold uppercase tracking-widest italic text-[9px]">En Production</span>
             </p>
 
             <p class="mb-6 text-sm text-gray-400">{{ translationService.t('delivery.overview') }}</p>
 
             <div class="mt-auto">
-              <a routerLink="/projects/aura-delivery" class="text-[#3B82F6] hover:text-white transition-colors inline-flex items-center gap-2 text-sm">
-                {{ translationService.t('common.learnMore') }} →
+              <a routerLink="/projects/aura-delivery" class="inline-flex items-center gap-2 text-sm transition-all duration-300 text-aura-blue hover:text-white group">
+                {{ translationService.t('common.learnMore') }} 
+                <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
               </a>
             </div>
           </div>
@@ -182,28 +192,28 @@
   </section>
 
   <!-- Solutions Preview -->
-  <section class="aura-section">
+  <section>
     <div class="px-6 mx-auto max-w-7xl lg:px-12">
-      <div class="max-w-2xl mx-auto mb-12 text-center">
-        <h2 class="aura-headline-2 text-[#0B0D10] mb-4">{{ translationService.t('solutions.title') }}</h2>
+      <div class="max-w-2xl mx-auto mb-12 text-center ">
+        <h2 class="mt-8 mb-4 aura-headline-2 text-aura-text ">{{ translationService.t('solutions.title') }}</h2>
         <p class="aura-body">{{ translationService.t('solutions.subtitle') }}</p>
       </div>
 
-      <div class="grid gap-6 md:grid-cols-3 lg:gap-8">
+      <div class="grid gap-8 md:grid-cols-3 lg:gap-10">
         @for (solution of solutions; track $index) {
-          <div class="p-8 transition-transform duration-300 aura-card hover:-translate-y-1 flex flex-col">
-            <div class="w-12 h-12 bg-[#3B82F6]/10 rounded-xl flex items-center justify-center mb-6 text-[#3B82F6]">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex flex-col p-10 transition-all duration-300 aura-card hover:-translate-y-2 hover:shadow-xl group">
+            <div class="flex items-center justify-center mb-8 transition-colors w-14 h-14 bg-aura-blue/10 rounded-2xl text-aura-blue group-hover:bg-aura-blue group-hover:text-white">
+              <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="solution.iconPath"/>
               </svg>
             </div>
-            <h3 class="text-xl font-medium text-[#0B0D10] mb-3">{{ translationService.t(solution.titleKey) }}</h3>
-            <p class="aura-body flex-1">{{ translationService.t(solution.descKey) }}</p>
+            <h3 class="mb-4 text-2xl font-medium text-aura-text">{{ translationService.t(solution.titleKey) }}</h3>
+            <p class="flex-1 leading-normal aura-body">{{ translationService.t(solution.descKey) }}</p>
           </div>
         }
       </div>
 
-      <div class="mt-12 text-center">
+      <div class="mt-12 mb-8 text-center">
         <a routerLink="/solutions" class="aura-pill-dark">
           {{ translationService.t('solutions.explore') }}
         </a>
