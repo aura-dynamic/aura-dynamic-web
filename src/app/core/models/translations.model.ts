@@ -115,6 +115,28 @@ export const translations: Translations = {
     fr: 'Gestion des événements, des réservations et des paiements dans un système centralisé.', 
     en: 'Event management, bookings and payments in a centralized system.' 
   },
+
+  // Ticketing Modules
+  'ticketing.module.events.title': { fr: 'Gestion des événements', en: 'Event Management' },
+  'ticketing.cap.events.1': { fr: 'Création et gestion des événements', en: 'Event creation & management' },
+  'ticketing.cap.events.2': { fr: 'Paramétrage des billets et disponibilités', en: 'Ticket & availability settings' },
+  'ticketing.cap.events.3': { fr: 'Gestion des places et quotas', en: 'Seat & quota management' },
+
+  'ticketing.module.sales.title': { fr: 'Réservations & ventes', en: 'Reservations & Sales' },
+  'ticketing.cap.sales.1': { fr: 'Vente de billets en ligne', en: 'Online ticket selling' },
+  'ticketing.cap.sales.2': { fr: 'Gestion des réservations', en: 'Reservation management' },
+  'ticketing.cap.sales.3': { fr: 'Suivi des commandes', en: 'Order tracking' },
+
+  'ticketing.module.payments.title': { fr: 'Paiements & transactions', en: 'Payments & Transactions' },
+  'ticketing.cap.pay.1': { fr: 'Paiements sécurisés', en: 'Secure payments' },
+  'ticketing.cap.pay.2': { fr: 'Suivi des transactions', en: 'Transaction tracking' },
+  'ticketing.cap.pay.3': { fr: 'Historique des ventes', en: 'Sales history' },
+
+  'ticketing.module.reporting.title': { fr: 'Pilotage & suivi', en: 'Steering & Monitoring' },
+  'ticketing.cap.rep.1': { fr: 'Tableau de bord administrateur', en: 'Admin dashboard' },
+  'ticketing.cap.rep.2': { fr: 'Suivi des revenus', en: 'Revenue monitoring' },
+  'ticketing.cap.rep.3': { fr: 'Statistiques des ventes', en: 'Sales statistics' },
+
   'ticketing.feature.1': { fr: 'Vente de billets en ligne', en: 'Online ticket selling' },
   'ticketing.feature.2': { fr: 'Tableau de bord administrateur', en: 'Admin dashboard' },
   'ticketing.feature.3': { fr: 'Suivi sécurisé des ventes', en: 'Secure sales tracking' },

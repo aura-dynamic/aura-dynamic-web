@@ -49,7 +49,42 @@ export const PROJECTS: Project[] = [
     overviewKey: 'ticketing.overview',
     category: 'ecommerce',
     technologies: ['React', 'Node.js', 'PostgreSQL'],
-    capabilities: [
+    capabilities: [], // Replaced by projectModules
+    projectModules: [
+      {
+        titleKey: 'ticketing.module.events.title',
+        features: [
+          'ticketing.cap.events.1',
+          'ticketing.cap.events.2',
+          'ticketing.cap.events.3'
+        ]
+      },
+      {
+        titleKey: 'ticketing.module.sales.title',
+        features: [
+          'ticketing.cap.sales.1',
+          'ticketing.cap.sales.2',
+          'ticketing.cap.sales.3'
+        ]
+      },
+      {
+        titleKey: 'ticketing.module.payments.title',
+        features: [
+          'ticketing.cap.pay.1',
+          'ticketing.cap.pay.2',
+          'ticketing.cap.pay.3'
+        ]
+      },
+      {
+        titleKey: 'ticketing.module.reporting.title',
+        features: [
+          'ticketing.cap.rep.1',
+          'ticketing.cap.rep.2',
+          'ticketing.cap.rep.3'
+        ]
+      }
+    ],
+    impacts: [
       'ticketing.feature.1', 'ticketing.feature.2', 
       'ticketing.feature.3', 'ticketing.feature.4'
     ],

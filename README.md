@@ -87,14 +87,22 @@ npm start
 4. Copy the generated 16-character password
 5. Use this as `EMAIL_PASS` in your `.env` file
 
-## Production Build
+## Production Build & Deployment
 
+### Manual Build
 ```bash
 # Build frontend
 npm run build
-# Output in dist/aura-dynamic-angular/browser/
+# Output in dist/aura-dynamic-web/browser/
+```
 
-# For backend deployment, see backend/README.md
+### GitHub Pages Deployment
+The project is configured for automated deployment via GitHub Actions. Any push to the `main` branch will trigger a build and deploy to the `gh-pages` branch.
+
+To deploy manually from your local machine:
+```bash
+# Deploy to GitHub Pages
+npm run deploy
 ```
 
 ## Routes
